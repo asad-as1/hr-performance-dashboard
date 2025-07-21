@@ -4,8 +4,8 @@ import { fetchUsers } from '@/lib/fetchUsers';
 import UserCard from '@/components/UserCard';
 import SearchFilter from '@/components/SearchFilter';
 import { useSearch } from '@/hooks/useSearch';
-import Header from '@/components/Header';
-import Sidebar from '@/components/Sidebar';
+// import Header from '@/components/Header';
+// import Sidebar from '@/components/Sidebar';
 
 export default function HomePage() {
   const [users, setUsers] = useState([]);

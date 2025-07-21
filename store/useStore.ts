@@ -20,7 +20,7 @@ interface State {
   currentUser: string | null;
   bookmarks: User[]; // ✅ New field
   toggleTheme: () => void;
-  login: (username: string) => void;
+  login: (username: string, password: string) => void;
   logout: () => void;
   toggleBookmark: (user: User) => void; // ✅ New action
 }
@@ -59,6 +59,10 @@ export const useStore = create<State>((set, get) => ({
       localStorage.removeItem('user');
     }
     set({ currentUser: null });
+    
+     if (typeof window !== 'undefined') {
+      window.location.href = '/login'; 
+    }
   },
 
   toggleBookmark: (user: User) => {

@@ -56,8 +56,10 @@ export default function EmployeeDetailPage() {
 
   return (
     <div className="p-4 max-w-3xl mx-auto space-y-4">
-      <h1 className="text-2xl font-bold">{user.firstName} {user.lastName}</h1>
-      <p className="text-gray-500">{user.email} - {user.department}</p>
+      <img src={user.image} alt="" />
+      <h1 className="text-2xl font-bold">Name: {user.firstName} {user.lastName}</h1>
+      <p className="text-gray-500">Email: {user.email}</p>
+      <p className="text-gray-500">Department: {user.department}</p>
       <p><strong>Performance History:</strong> {user.history.join(', ')}</p>
       <p><strong>Average Rating:</strong> {getAverage(user.history)}</p>
       <Tabs tabs={tabs} />

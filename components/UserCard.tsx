@@ -25,8 +25,9 @@ const UserCard: React.FC<Props> = ({ user }) => {
       />
       <div className="text-center">
         <h2 className="text-lg font-semibold">{getFullName(user.firstName, user.lastName)}</h2>
-        <p className="text-sm text-gray-500">{user.email}</p>
-        <p className="text-sm text-gray-400">{user.department}</p>
+        <p className="text-sm text-gray-500">Email: {user.email}</p>
+        <p className="text-sm text-gray-500">Age: {user.age}</p>
+        <p className="text-sm text-gray-400">Department: {user.department}</p>
       </div>
 
       <div className="flex justify-center">
