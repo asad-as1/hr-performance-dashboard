@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { User } from '@/types/user';
+import { User } from '@/components/user';
 
 export const useSearch = (users: User[]) => {
   const [searchTerm, setSearchTerm] = useState('');

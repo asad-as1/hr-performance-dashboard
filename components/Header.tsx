@@ -10,12 +10,12 @@ export default function Header() {
     document.documentElement.classList.toggle("dark", isDark);
   }, []);
 
-  const toggleTheme = () => {
-    const newMode = !darkMode;
-    setDarkMode(newMode);
-    localStorage.setItem("theme", newMode ? "dark" : "light");
-    document.documentElement.classList.toggle("dark", newMode);
-  };
+  // const toggleTheme = () => {
+  //   const newMode = !darkMode;
+  //   setDarkMode(newMode);
+  //   localStorage.setItem("theme", newMode ? "dark" : "light");
+  //   document.documentElement.classList.toggle("dark", newMode);
+  // };
 
   if (darkMode === null) return null; // Prevent hydration mismatch
 

@@ -1,18 +1,30 @@
 'use client';
-import { useState } from 'react';
+import { useState, ChangeEvent, FormEvent } from 'react';
+
+type FormState = {
+  first: string;
+  last: string;
+  email: string;
+};
 
 export default function CreateUserPage() {
-  const [form, setForm] = useState({ first: '', last: '', email: '' });
+  const [form, setForm] = useState<FormState>({ first: '', last: '', email: '' });
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log('Submitted form:', form);
+    // You can integrate your API call here
   };
 
   return (
     <div className="max-w-md mx-auto p-4">
       <h1 className="text-xl font-bold mb-4">Create New User</h1>
-      <form className="space-y-4">
+      <form className="space-y-4" onSubmit={handleSubmit}>
         <input
           name="first"
           placeholder="First Name"
@@ -36,7 +48,6 @@ export default function CreateUserPage() {
         />
         <button
           type="submit"
-          onClick={(e) => e.preventDefault()}
           className="bg-green-600 text-white px-4 py-2 rounded"
         >
           Create (Mock)

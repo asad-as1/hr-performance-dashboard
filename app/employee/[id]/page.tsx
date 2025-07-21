@@ -4,15 +4,31 @@ import { useParams } from 'next/navigation';
 import Tabs from '@/components/Tabs';
 import { fetchUsers } from '@/lib/fetchUsers';
 import { getAverage } from '@/lib/utils';
+import Image from 'next/image';
+
+type User = {
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  image?: string;
+  address?: string;
+  phone?: string;
+  department?: string;
+  bio?: string;
+  history?: number[];
+};
 
 export default function EmployeeDetailPage() {
-  const { id } = useParams();
-  const [user, setUser] = useState<any>(null);
+  const params = useParams<{ id: string }>();
+  const id = params.id;
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
+    if (!id) return;
     fetchUsers().then((users) => {
-      const found = users.find((u: any) => u.id === Number(id));
-      setUser(found);
+      const found = users.find((u) => u.id === Number(id)); // ✅ Removed `any`
+      setUser(found || null);
     });
   }, [id]);
 
@@ -23,9 +39,9 @@ export default function EmployeeDetailPage() {
       label: 'Overview',
       content: (
         <div>
-          <p className="mb-2">{user.bio}</p>
-          <p><strong>Address:</strong> {user.address}</p>
-          <p><strong>Phone:</strong> {user.phone}</p>
+          <p className="mb-2">{user.bio || 'No bio provided.'}</p>
+          <p><strong>Address:</strong> {user.address || 'N/A'}</p>
+          <p><strong>Phone:</strong> {user.phone || 'N/A'}</p>
         </div>
       ),
     },
@@ -56,12 +72,18 @@ export default function EmployeeDetailPage() {
 
   return (
     <div className="p-4 max-w-3xl mx-auto space-y-4">
-      <img src={user.image} alt="" />
+      <Image
+        width={100}
+        height={100}
+        src={user.image || '/default-profile.png'}
+        alt={`${user.firstName} ${user.lastName}`}
+        className="w-32 h-32 object-cover rounded-full"
+      />
       <h1 className="text-2xl font-bold">Name: {user.firstName} {user.lastName}</h1>
       <p className="text-gray-500">Email: {user.email}</p>
-      <p className="text-gray-500">Department: {user.department}</p>
-      <p><strong>Performance History:</strong> {user.history.join(', ')}</p>
-      <p><strong>Average Rating:</strong> {getAverage(user.history)}</p>
+      <p className="text-gray-500">Department: {user.department || 'N/A'}</p>
+      <p><strong>Performance History:</strong> {user.history?.join(', ') || 'No history available'}</p>
+      <p><strong>Average Rating:</strong> {getAverage(user.history || [])}</p>
       <Tabs tabs={tabs} />
     </div>
   );

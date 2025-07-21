@@ -2,9 +2,10 @@
 import React from 'react';
 import { getFullName } from '@/lib/utils';
 import { useBookmarks } from '@/hooks/useBookmarks';
-import { User } from '@/types/user';
+import { User } from '@/components/user';
 import { FaRegStar, FaStar } from 'react-icons/fa';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 interface Props {
   user: User;
@@ -18,7 +19,8 @@ const UserCard: React.FC<Props> = ({ user }) => {
 
   return (
     <div className="bg-white dark:bg-gray-800 shadow rounded-xl p-4 space-y-2 w-full sm:w-80">
-      <img
+      <Image 
+        width={100} height={100}
         src={user.image}
         alt={user.firstName}
         className="w-20 h-20 rounded-full object-cover mx-auto"
