@@ -1,3 +1,6 @@
+## Deployed link: https://hr-dashboard-as2.netlify.app/
+
+
 ![Home page or Dashboard](public/img1.png)
 ![Profile Page](public/img2.png)
 ![Analysis Page](public/img3.png)
