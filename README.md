@@ -1,3 +1,11 @@
+![Home page or Dashboard](public/img1.png)
+![Profile Page](public/img2.png)
+![Analysis Page](public/img3.png)
+![Create Page](public/img4.png)
+![Login Page](public/img5.png)
+
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

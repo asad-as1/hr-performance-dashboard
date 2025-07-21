@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { classNames } from '@/lib/utils';
-import { useStore } from '@/store/useStore'; // ✅ Import store
+import { useStore } from '@/store/useStore'; 
 
 const navItems = [
   { name: 'Dashboard', href: '/' },
@@ -13,7 +13,7 @@ const navItems = [
 
 const Sidebar = () => {
   const pathname = usePathname();
-  const { currentUser, logout } = useStore(); // ✅ Reactive state access
+  const { currentUser, logout } = useStore(); 
 
   return (
     <aside className="w-full sm:w-60 bg-gray-200 dark:bg-gray-900 p-4 min-h-screen">
@@ -33,7 +33,6 @@ const Sidebar = () => {
           </Link>
         ))}
 
-        {/* ✅ Show Login or Logout based on state */}
         {currentUser ? (
           <button
             onClick={logout}

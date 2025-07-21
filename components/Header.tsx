@@ -22,12 +22,12 @@ export default function Header() {
   return (
     <header className="flex justify-between p-4 border-b">
       <h1 className="text-xl font-bold">HR Performance Dashboard</h1>
-      <button
+      {/* <button
         onClick={toggleTheme}
         className="text-sm px-2 py-1 border rounded"
       >
-        {darkMode ? "Light Mode" : "Dark Mode"}
-      </button>
+        {/* {darkMode ? "Light Mode" : "Dark Mode"} 
+      </button> */}
     </header>
   );
 }
